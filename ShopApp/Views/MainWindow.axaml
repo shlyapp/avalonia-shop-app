@@ -25,6 +25,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
+        <!-- Кнопка для навигации -->
         <StackPanel Grid.Column="0" Height="900"
                     Width="340"
                     Background="#E4E6C3"
@@ -33,6 +34,7 @@
                     VerticalAlignment="Top"
                     Spacing="10">
             
+            <!-- Лого -->
             <Border Width="300"
                     Height="134"
                     Background="#D2D59A"
@@ -45,6 +47,7 @@
                        VerticalAlignment="Center"
                        FontSize="48"/>
             </Border>
+            
             <Button Content="Товары"
                     Command="{Binding ClickInNavigationButton}"
                     CommandParameter="Товары"
@@ -54,8 +57,10 @@
                     Command="{Binding ClickInNavigationButton}"
                     CommandParameter="Корзина"
                     Background="{Binding ButtonColors[2]}"/>
+            
         </StackPanel>
         
+        <!-- Место для отображения страницы -->
         <TransitioningContentControl Grid.Column="1"
                                      Content="{Binding CurrentPage}"/> 
         

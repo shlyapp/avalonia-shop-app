@@ -17,9 +17,12 @@
         <converters:BitmapAssetValueConverter x:Key="variableImage"/>
     </UserControl.Resources>
     
+    <!-- Товары -->
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <ListBox Items="{Binding Products}"
                  Margin="15">
+             
+            <!-- Контейнер для отображения -->
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"
@@ -27,24 +30,35 @@
                     </WrapPanel> 
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
+            
+            <!-- Шаблон отображения -->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Width="440" Height="500"
                             Background="#C5D86D"
                             CornerRadius="30">
                         <StackPanel>
+                            
+                            <!-- Картинка -->
                             <Border Width="320" Height="300"
                                     CornerRadius="30"
                                     HorizontalAlignment="Center"
                                     Background="#F7F7F2" Margin="10" Padding="10">
+                                
                                 <Image Source="{Binding PathToImage, Converter={StaticResource variableImage}}"/>
                             </Border>
+                            
+                            <!-- Название -->
                             <Label Content="{Binding Name}"
                                    HorizontalAlignment="Center"
                                    FontSize="32"/>
+                            
+                            <!-- Цена за вес -->
                             <Label Content="{Binding PricePerWeight}"
                                    HorizontalAlignment="Center"
                                    FontSize="32"/>
+                            
+                            <!-- Кнопка добавить в корзину -->
                             <Button HorizontalAlignment="Center"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"
@@ -56,6 +70,7 @@
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            
         </ListBox>
     </ScrollViewer>
     

@@ -25,11 +25,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
+        <!-- Отображение баланса и бонусов -->
         <StackPanel Grid.Row="0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal"
                     Spacing="10">
+            
+            <!-- Баланс -->
             <Border Background="#D2D59A" Padding="10"
                     CornerRadius="25">
                 <Label FontSize="48"
@@ -37,6 +40,8 @@
                        VerticalContentAlignment="Center"
                        Content="{Binding Customer.Money}"/>
             </Border>
+            
+            <!-- Бонусы -->
             <Border Background="#D2D59A" Padding="10"
                     CornerRadius="25">
                 <Label FontSize="48"
@@ -44,8 +49,10 @@
                        VerticalContentAlignment="Center"
                        Content="{Binding Customer.Bonuses}"/>
             </Border>
+            
         </StackPanel> 
         
+        <!-- Аналогично ShopPage -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
             <ListBox Items="{Binding Customer.ShoppingCart}"
                      Margin="5">
@@ -60,22 +67,27 @@
                 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
+                        
                         <Border Width="1000" Height="100"
                                 Background="#C5D86D"
                                 CornerRadius="30">
                             <StackPanel Orientation="Horizontal">
+                                
                                 <Border Width="70" Height="70"
                                         CornerRadius="30"
                                         HorizontalAlignment="Center"
                                         Background="#F7F7F2" Margin="10" Padding="10">
                                     <Image Source="{Binding PathToImage, Converter={StaticResource variableImage}}"/>
                                 </Border>
+                                
                                 <Label Content="{Binding Name}"
                                        VerticalAlignment="Center"
                                        FontSize="32"/>
+                                
                                 <Label Content="{Binding Price}"
                                        VerticalAlignment="Center"
                                        FontSize="32"/>
+                                
                                 <Label Content="{Binding Weight}"
                                        VerticalAlignment="Center"
                                        FontSize="32"/>
@@ -84,6 +96,7 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"
                                             Spacing="10">
+                                    
                                     <Button Height="40" Width="40"
                                             CornerRadius="10"
                                             Content="+"
@@ -91,9 +104,8 @@
                                             VerticalContentAlignment="Center"
                                             FontSize="17"       
                                             FontWeight="Bold"
-                                            Command="{Binding AddClickButton}">
-                                        
-                                    </Button>
+                                            Command="{Binding AddClickButton}"/>
+                                    
                                     <Button Height="40" Width="40"
                                             CornerRadius="10"
                                             Content="-"
@@ -102,33 +114,22 @@
                                             VerticalContentAlignment="Center"
                                             FontSize="17"
                                             FontWeight="Bold"
-                                            Command="{Binding RemoveClickButton}">
-                                        
-                                    </Button>
+                                            Command="{Binding RemoveClickButton}"/>
                                 </StackPanel>
                                 
                             </StackPanel>
                         </Border>
+                        
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
         
-        <StackPanel Grid.Row="2"
-                    Spacing="20"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-            <Label FontSize="48"
-                   HorizontalContentAlignment="Center"
-                   VerticalContentAlignment="Center"
-            />
+
             <Button Content="Оплатить"
                     Command="{Binding ClickInBuyButton}"
-                    Width="300"/>
-        </StackPanel>
+                    Width="300"
+                    Grid.Row="2"/>
         
     </Grid>
-    
-    
 </UserControl>
