@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ShopApp.ViewModels"
+        mc:Ignorable="d" Width="500" Height="300"
+        x:DataType="viewModels:PurshareWindowViewModel"
+        x:Class="ShopApp.Views.PurshareWindow"
+        Title="PurshareWindow"
+        WindowStartupLocation="CenterScreen">
+        
+        <Design.DataContext>
+                <viewModels:PurshareWindowViewModel/>
+        </Design.DataContext>
+        
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <Label FontSize="32"
+                       HorizontalAlignment="Center"
+                       Content="{Binding ResultMessage}"/>  
+            <Label FontSize="32"
+                   HorizontalAlignment="Center"
+                   Content="{Binding Info}"/>   
+        </StackPanel>
+        
+</Window>
