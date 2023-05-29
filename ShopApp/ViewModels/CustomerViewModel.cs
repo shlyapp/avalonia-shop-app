@@ -10,8 +10,13 @@ namespace ShopApp.ViewModels;
 
 public class CustomerViewModel : INotifyPropertyChanged
 {
+    /// <summary>
+    /// Покупатель для отображения
+    /// </summary>
     private Customer _customer;
 
+    // Далее мы дублируем свойства для того, чтобы корректно отобразить на форме
+    
     public string Money
     {
         get

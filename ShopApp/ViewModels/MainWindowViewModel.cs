@@ -15,52 +15,69 @@ namespace ShopApp.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
+    /// <summary>
+    /// Для паттерна одиночка
+    /// </summary>
     private static MainWindowViewModel _instanse;
+    
+    /// <summary>
+    /// Текушая отображаемая страница
+    /// </summary>
     private ViewModelBase _currentPage;
 
     private MainWindowViewModel()
     {
-        _shopPage = new ShopPageViewModel();
-        _shoppingCartPage = new ShoppingCartPageViewModel();
+        // Создаем страницы
+        ShopPage = new ShopPageViewModel();
+        ShoppingCartPage = new ShoppingCartPageViewModel();
 
-        CurrentPage = _shopPage;
+        // Задаем текущую страницу
+        CurrentPage = ShopPage;
 
+        // Команда для перехода между страницами
         ClickInNavigationButton = ReactiveCommand.Create<string>(ChangeCurrentPage);
-
+        
         ButtonColors = new ObservableCollection<SolidColorBrush>()
         {
-            new SolidColorBrush(Colors.Transparent),
             new SolidColorBrush(Color.Parse("#D2D59A")),
             new SolidColorBrush(Colors.Transparent),
         };
     }
 
-    public ShopPageViewModel _shopPage; 
-    public ShoppingCartPageViewModel _shoppingCartPage;
-
+    // Наши страницы
+    public ShopPageViewModel ShopPage; 
+    public ShoppingCartPageViewModel ShoppingCartPage;
+    
     public ReactiveCommand<string, Unit> ClickInNavigationButton { get; }
     
+    // Цвета для кнопки активной страницы
     public ObservableCollection<SolidColorBrush> ButtonColors { get; set; }
 
+    /// <summary>
+    /// Смена страницы
+    /// </summary>
+    /// <param name="parameter">Название кнопки</param>
     public void ChangeCurrentPage(string parameter)
     {
+        // В зависимости от названия кнопки меняем страницу
         switch (parameter)
         {
             case "Товары":
-                CurrentPage = _shopPage;
-                ButtonColors[0] = new SolidColorBrush(Colors.Transparent);
-                ButtonColors[1] = new SolidColorBrush(Color.Parse("#D2D59A"));
-                ButtonColors[2] = new SolidColorBrush(Colors.Transparent);
+                CurrentPage = ShopPage;
+                ButtonColors[0] = new SolidColorBrush(Color.Parse("#D2D59A"));
+                ButtonColors[1] = new SolidColorBrush(Colors.Transparent);
                 break;
             case "Корзина":
-                CurrentPage = _shoppingCartPage;
+                CurrentPage = ShoppingCartPage;
                 ButtonColors[0] = new SolidColorBrush(Colors.Transparent);
-                ButtonColors[1] = new SolidColorBrush(Colors.Transparent);
-                ButtonColors[2] = new SolidColorBrush(Color.Parse("#D2D59A"));
+                ButtonColors[1] = new SolidColorBrush(Color.Parse("#D2D59A"));
                 break;
         }
     }
     
+    /// <summary>
+    /// Единственный экземпляр
+    /// </summary>
     public static MainWindowViewModel Instanse
     {
         get
@@ -74,6 +91,9 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Текущая страница
+    /// </summary>
     public ViewModelBase CurrentPage
     {
         get

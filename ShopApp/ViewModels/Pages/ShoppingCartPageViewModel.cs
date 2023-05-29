@@ -11,8 +11,14 @@ namespace ShopApp.ViewModels.Pages;
 
 public class ShoppingCartPageViewModel : ViewModelBase
 {
+    /// <summary>
+    /// Покупатель
+    /// </summary>
     public CustomerViewModel Customer { get; set; }
 
+    /// <summary>
+    /// Событие нажатия по кнопке "Купить"
+    /// </summary>
     public void ClickInBuyButton()
     {
        Database.Database.Shop.BuyItems();
@@ -20,6 +26,7 @@ public class ShoppingCartPageViewModel : ViewModelBase
     
     public ShoppingCartPageViewModel()
     {
+        // Подтягиваем данные из базы
         Customer = Database.Database.Customer;
     }
 }

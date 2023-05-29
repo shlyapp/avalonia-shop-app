@@ -7,8 +7,13 @@ namespace ShopApp.ViewModels.Products;
 
 public class WeightProductViewModel : INotifyPropertyChanged
 {
+    /// <summary>
+    /// Товар, который мы отображаем
+    /// </summary>
     private WeightProduct _product;
-
+    
+    // Далее мы дублируем свойства для того, чтобы корректно отобразить на форме
+    
     public string Name
     {
         get
@@ -43,16 +48,26 @@ public class WeightProductViewModel : INotifyPropertyChanged
         }
     }
     
+    /// <summary>
+    /// Добавление товара 
+    /// </summary>
     public void AddClickButton()
     {
         Database.Database.Customer.AddProduct(_product);
+        
+        // Оповещаем форму о изменениях
         OnPropertyChanged(nameof(Price));
         OnPropertyChanged(nameof(Weight));
     }
 
+    /// <summary>
+    /// Удаление товара
+    /// </summary>
     public void RemoveClickButton()
     {
         Database.Database.Customer.RemoveProduct(_product);
+        
+        // Оповещаем форму о изменениях
         OnPropertyChanged(nameof(Price));
         OnPropertyChanged(nameof(Weight));
     }
@@ -63,6 +78,7 @@ public class WeightProductViewModel : INotifyPropertyChanged
         PathToImage = pathToImage;
     }
 
+    // Далее идут унаследованные методы для оповещения
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

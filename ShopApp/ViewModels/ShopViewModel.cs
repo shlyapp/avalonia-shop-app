@@ -26,14 +26,21 @@ public class ShopViewModel
         }
     }
 
+    /// <summary>
+    /// Метод покупки товаров
+    /// </summary>
     public void BuyItems()
     {
+        // Если корзина пустая, то завершаем метод
         if (Database.Database.Customer.Model.ShoppingCart.Products.Count == 0)
         {
             return;
         }
         
+        // Необходимая сумма для покупки
         double money = Database.Database.Customer.Model.ShoppingCart.TotalPrice;
+        
+        // Окно для вывода результата
         PurshareWindow window;
         
         if (_shop.TryBuyItems(Database.Database.Customer.Model))
