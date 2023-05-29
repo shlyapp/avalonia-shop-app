@@ -29,10 +29,10 @@ public class Database
         // Заполняем продукты магазина
         Shop = new ShopViewModel(new Shop(new ObservableCollection<Product>()
         {
-            new WeightProduct("Chicken Drumstick", 429),
-            new WeightProduct("Chicken Fillet", 429),
-            new WeightProduct("Chicken Wings", 429),
-            new WeightProduct("Cutlets", 429),
+            new WeightProduct("Chicken Drumstick", 324),
+            new WeightProduct("Chicken Fillet", 231),
+            new WeightProduct("Chicken Wings", 198),
+            new WeightProduct("Cutlets", 256),
         }));
         
         // Инициализируем покупателя
